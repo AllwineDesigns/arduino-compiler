@@ -1,10 +1,6 @@
-# Node-Articles-NLP
+# Arduino Compiler
 
-Running Node all the way from development to production on Heroku.
-
-Check it out at [http://node-articles-nlp.herokuapp.com/](http://node-articles-nlp.herokuapp.com/).
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/heroku-examples/node-articles-nlp)
+An Arduino web compiler (a thin wrapper around the arduino executable)
 
 ## Local dependencies
 
@@ -27,15 +23,11 @@ $ npm install
 
 ## Deploying
 
-Deploying is easy - just use the Heroku Button:
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/heroku-examples/node-articles-nlp)
-
-If you'd rather clone locally and then deploy through the CLI, you can do that too:
+Clone locally and then deploy through the heroku CLI:
 
 ```
-git clone git@github.com:heroku-examples/node-articles-nlp.git
-cd node-articles-nlp
+git clone git@github.com:AllwineDesigns/arduino-compiler.git
+cd arduino-compiler
 
 heroku create
 
@@ -52,7 +44,7 @@ heroku open
 
 ## Config
 
-Environment variables are mapped to a config object in [lib/config.js](https://github.com/heroku-examples/node-articles-nlp/blob/master/lib/config.js).
+Environment variables are mapped to a config object in lib/config.js.
 This provides reasonable defaults as well as a layer of generalization
 (`process.env.MONGOHQ_URL` => `config.mongo_url`).
 

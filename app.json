@@ -1,8 +1,8 @@
 {
-  "name": "Node-Articles-NLP",
-  "description": "An Express 4 app that works all the way into production",
-  "website": "https://github.com/heroku/node-articles-nlp",
-  "repository": "https://github.com/heroku/node-articles-nlp",
+  "name": "Allwine Designs Arduino Compiler",
+  "description": "An Express 4 app compiles Arduino scripts.",
+  "website": "https://github.com/AllwineDesigns/arduino-compiler",
+  "repository": "https://github.com/AllwineDesigns/arduino-compiler",
   "logo": "https://node-js-sample.herokuapp.com/node.svg",
   "success_url": "/",
   "keywords": [
