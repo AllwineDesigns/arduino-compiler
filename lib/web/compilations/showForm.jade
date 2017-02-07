@@ -78,7 +78,7 @@ html(lang='en')
         });
         console.log(payload);
 
-        $.post(info.http + "/upload", payload, function(data, status) {
+        $.post(info.https + "/upload", payload, function(data, status) {
           console.log(data);
           console.log(status);
         });
@@ -115,9 +115,9 @@ html(lang='en')
       });
 
       var checkPort = function(port) {
-            $.ajax({ url: "http://localhost:" + port + "/info" }).done(function(data) {
+            $.ajax({ url: "https://localhost:" + port + "/info" }).done(function(data) {
                 info = data;
-                socket = io(info.ws);
+                socket = io(info.wss);
                 socket.on('connect', function() {
                   socket.on('message', function(msg) {
                     try {
