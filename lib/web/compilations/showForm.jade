@@ -2,15 +2,75 @@ doctype html
 html(lang='en')
   head
     title Allwine Designs Arduino Compiler
+    style.
+      #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      .container {
+        position: relative;
+        width: 600px;
+        height: 300px;
+      }
 
   body
-    form(method="post" action="/compilations")
-      textarea(name="script")
-      br
-      input(type="text" name="board" value="arduino:avr:uno")
-      br
-      button.
-        Submit
+    button#upload.
+        Upload
+    div.container
+      div#editor.
+        // the setup function runs once when you press reset or power the board
+        void setup() {
+            // initialize digital pin 13 as an output.
+            pinMode(13, OUTPUT);
+        }
+
+        // the loop function runs over and over again forever
+        void loop() {
+            digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
+            delay(100);              // wait for a second
+            digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
+            delay(100);              // wait for a second
+        }
+
 
     script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js")
+    script.
+      var editor = ace.edit("editor");
+      editor.getSession().setMode("ace/mode/c_cpp");
+
+      var upload = function() {
+      };
+
+      $("#upload").click(function() {
+        var args = {
+          script: editor.getValue(),
+          board: "arduino:avr:uno"
+        };
+        $.post("/compilations", args,
+        function(data, status) {
+          if(status == "success") {
+            console.log(data);
+            var getHex = function() {
+              $.get(data.link, {}, function(data, status) {
+                    if(status == "success") {
+                      if(data.isReady) {
+                        console.log(data.hex);
+                      } else {
+                        setTimeout(getHex, 1000);
+                      }
+                    } else {
+                      console.log("error checking link");
+                    }
+                });
+            };
+            setTimeout(getHex, 1000);
+          } else {
+            console.log("Error uploading");
+          }
+        });
+      });
