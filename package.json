@@ -19,7 +19,7 @@
     "express": "^4.14.1",
     "foreman": "^0.4.2",
     "jackrabbit": "^2.3.0",
-    "pug": "^2.0.0-beta11",
+    "ejs": "^2.5.6",
     "lodash": "^2.4.1",
     "logfmt": "^1.1.2",
     "mongoose": "^4.8.5",
